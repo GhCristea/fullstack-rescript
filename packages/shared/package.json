@@ -1,0 +1,14 @@
+{
+  "name": "@fullstack-rescript/shared",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./routes": "./src/Routes.res.mjs"
+  },
+  "scripts": {
+    "build": "rescript build",
+    "clean": "rescript clean",
+    "watch": "rescript build -w"
+  }
+}

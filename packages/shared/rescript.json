@@ -1,0 +1,7 @@
+{
+  "name": "@fullstack-rescript/shared",
+  "sources": [{"dir": "src", "subdirs": true}],
+  "suffix": ".res.mjs",
+  "package-specs": [{"module": "esmodule", "in-source": true}],
+  "warnings": {"error": "+a-8-26"}
+}

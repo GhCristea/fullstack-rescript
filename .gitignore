@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# ReScript compiled output — treat as build artifacts
+*.res.mjs
+lib/
+
+# Cloudflare Workers
+.wrangler/
+.dev.vars
+
+# Build outputs
+dist/
+
+# OS / Editor
+.DS_Store
+*.swp
