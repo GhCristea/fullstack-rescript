@@ -8,6 +8,6 @@
   "suffix": ".res.mjs",
   "package-specs": [{"module": "esmodule", "in-source": true}],
   "dependencies": ["@rescript/react"],
-  "jsx": {"module": "react", "mode": "automatic"},
+  "jsx": {"version": 4, "mode": "automatic"},
   "warnings": {"error": "+a-8-26"}
 }
