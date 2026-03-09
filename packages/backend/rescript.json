@@ -1,0 +1,8 @@
+{
+  "name": "@fullstack-rescript/backend",
+  "sources": [{"dir": "src", "subdirs": true}],
+  "suffix": ".res.mjs",
+  "package-specs": [{"module": "esmodule", "in-source": true}],
+  "bs-dependencies": ["@fullstack-rescript/shared", "rescript-schema"],
+  "warnings": {"error": "+a-8-26"}
+}

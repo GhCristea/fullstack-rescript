@@ -1,0 +1,21 @@
+{
+  "name": "@fullstack-rescript/backend",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/Main.res.mjs",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "rescript build && wrangler deploy",
+    "build": "rescript build",
+    "watch": "rescript build -w"
+  },
+  "dependencies": {
+    "@fullstack-rescript/shared": "workspace:*",
+    "hono": "^4.0.0",
+    "rescript-schema": "^9.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
