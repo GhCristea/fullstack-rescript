@@ -22,12 +22,18 @@ let make = () => {
   // POST /users
   let _ = app->Hono.post(Users.Create.path, async c => {
     let raw = await c->Hono.req->Hono.parseJson
-    switch raw->S.parseWith(Users.Create.Request.schema) {
-    | Ok(input) =>
-      let created: Users.user = {id: "todo-uuid", name: input.name, email: input.email}
-      c->Hono.jsonWithStatus(created, 201)
-    | Error(e) =>
-      c->Hono.jsonWithStatus({"error": e->S.Error.message}, 400)
+    
+    // Manual validation: check required fields exist and are strings
+    switch (raw->Js.Dict.get("name"), raw->Js.Dict.get("email")) {
+    | (Some(name), Some(email)) =>
+      switch (Js.Json.decodeString(name), Js.Json.decodeString(email)) {
+      | (Some(nameStr), Some(emailStr)) =>
+        let input: Users.Create.Request.t = {name: nameStr, email: emailStr}
+        let created: Users.user = {id: "todo-uuid", name: input.name, email: input.email}
+        c->Hono.jsonWithStatus(created, 201)
+      | _ => c->Hono.jsonWithStatus({"error": "name and email must be strings"}, 400)
+      }
+    | _ => c->Hono.jsonWithStatus({"error": "name and email are required"}, 400)
     }
   })
 

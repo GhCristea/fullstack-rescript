@@ -12,8 +12,7 @@
   },
   "dependencies": {
     "@fullstack-rescript/shared": "workspace:*",
-    "hono": "^4.0.0",
-    "rescript-schema": "^9.0.0"
+    "hono": "^4.0.0"
   },
   "devDependencies": {
     "wrangler": "^3.0.0"

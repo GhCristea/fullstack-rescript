@@ -10,8 +10,5 @@
     "build": "rescript build",
     "clean": "rescript clean",
     "watch": "rescript build -w"
-  },
-  "dependencies": {
-    "rescript-schema": "^9.0.0"
   }
 }

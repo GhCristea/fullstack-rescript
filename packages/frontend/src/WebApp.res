@@ -6,9 +6,15 @@ let make = () => {
     let load = async () => {
       let res = await Fetch.fetch("/api" ++ Routes.Health.path)
       let raw = await res->Fetch.Response.json
-      switch raw->S.parseWith(Routes.Health.Get.Response.schema) {
-      | Ok(data) => setApiStatus(_ => data.status)
-      | Error(_) => setApiStatus(_ => "parse error")
+      
+      // Manual validation: check response shape
+      switch (raw->Js.Dict.get("status"), raw->Js.Dict.get("timestamp")) {
+      | (Some(status), Some(timestamp)) =>
+        switch (Js.Json.decodeString(status), Js.Json.decodeString(timestamp)) {
+        | (Some(statusStr), Some(_)) => setApiStatus(_ => statusStr)
+        | _ => setApiStatus(_ => "invalid response")
+        }
+      | _ => setApiStatus(_ => "invalid response")
       }
     }
     let _ = load()

@@ -3,6 +3,6 @@
   "sources": [{"dir": "src", "subdirs": true}],
   "suffix": ".res.mjs",
   "package-specs": [{"module": "esmodule", "in-source": true}],
-  "dependencies": ["@fullstack-rescript/shared", "rescript-schema"],
+  "dependencies": ["@fullstack-rescript/shared"],
   "warnings": {"error": "+a-8-26"}
 }
