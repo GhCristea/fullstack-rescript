@@ -1,9 +1,0 @@
-{
-  "name": "@fullstack-rescript/frontend",
-  "sources": [{"dir": "src", "subdirs": true}],
-  "suffix": ".res.mjs",
-  "package-specs": [{"module": "esmodule", "in-source": true}],
-  "dependencies": ["@rescript/react", "@fullstack-rescript/shared"],
-  "jsx": {"module": "react", "mode": "automatic"},
-  "warnings": {"error": "+a-8-26"}
-}
