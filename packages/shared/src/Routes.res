@@ -1,3 +1,5 @@
+module S = RescriptSchema
+
 // Contract layer: paths, request/response types, and schemas.
 // Import this package in both backend and frontend to stay in sync.
 
