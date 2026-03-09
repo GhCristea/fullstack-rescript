@@ -8,7 +8,7 @@ let make = () => {
   let _ = app->Hono.get(Health.path, async c => {
     let res: Health.Get.Response.t = {
       status: "ok",
-      timestamp: Js.Date.make()->Js.Date.toISOString,
+      timestamp: Date.make()->Date.toISOString,
     }
     c->Hono.json(res)
   })
@@ -24,10 +24,10 @@ let make = () => {
     let raw = await c->Hono.req->Hono.parseJson
     
     // Manual validation: check required fields exist and are strings
-    switch (raw->Js.Dict.get("name"), raw->Js.Dict.get("email")) {
+    switch (raw->Dict.get("name"), raw->Dict.get("email")) {
     | (Some(name), Some(email)) =>
-      switch (Js.Json.decodeString(name), Js.Json.decodeString(email)) {
-      | (Some(nameStr), Some(emailStr)) =>
+      switch (name->JSON.Classify.classify, email->JSON.Classify.classify) {
+      | (String(nameStr), String(emailStr)) =>
         let input: Users.Create.Request.t = {name: nameStr, email: emailStr}
         let created: Users.user = {id: "todo-uuid", name: input.name, email: input.email}
         c->Hono.jsonWithStatus(created, 201)
