@@ -3,7 +3,7 @@
   "sources": [{"dir": "src", "subdirs": true}],
   "suffix": ".res.mjs",
   "package-specs": [{"module": "esmodule", "in-source": true}],
-  "bs-dependencies": ["@rescript/react", "@fullstack-rescript/shared", "rescript-schema"],
+  "dependencies": ["@rescript/react", "@fullstack-rescript/shared", "rescript-schema"],
   "jsx": {"module": "react", "mode": "automatic"},
   "warnings": {"error": "+a-8-26"}
 }
