@@ -10,7 +10,7 @@ let make = () => {
       // Manual validation: check response shape
       switch (raw->Dict.get("status"), raw->Dict.get("timestamp")) {
       | (Some(status), Some(timestamp)) =>
-        switch (status->JSON.Classify.classify, timestamp->JSON.Classify.classify) {
+        switch (status, timestamp) {
         | (String(statusStr), String(_)) => setApiStatus(_ => statusStr)
         | _ => setApiStatus(_ => "invalid response")
         }

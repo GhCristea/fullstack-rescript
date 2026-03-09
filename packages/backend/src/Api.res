@@ -26,7 +26,7 @@ let make = () => {
     // Manual validation: check required fields exist and are strings
     switch (raw->Dict.get("name"), raw->Dict.get("email")) {
     | (Some(name), Some(email)) =>
-      switch (name->JSON.Classify.classify, email->JSON.Classify.classify) {
+      switch (name, email) {
       | (String(nameStr), String(emailStr)) =>
         let input: Users.Create.Request.t = {name: nameStr, email: emailStr}
         let created: Users.user = {id: "todo-uuid", name: input.name, email: input.email}
