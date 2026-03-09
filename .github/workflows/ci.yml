@@ -20,11 +20,5 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Build shared
-        run: bun run --cwd packages/shared build
-
-      - name: Build backend
-        run: bun run --cwd packages/backend build
-
-      - name: Build frontend
-        run: bun run --cwd packages/frontend build
+      - name: Build ReScript
+        run: bun run res:build
