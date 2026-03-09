@@ -25,14 +25,11 @@ let make = () => {
     
     // Manual validation: check required fields exist and are strings
     switch (raw->Dict.get("name"), raw->Dict.get("email")) {
-    | (Some(name), Some(email)) =>
-      switch (name, email) {
-      | (String(nameStr), String(emailStr)) =>
-        let input: Users.Create.Request.t = {name: nameStr, email: emailStr}
-        let created: Users.user = {id: "todo-uuid", name: input.name, email: input.email}
-        c->Hono.jsonWithStatus(created, 201)
-      | _ => c->Hono.jsonWithStatus({"error": "name and email must be strings"}, 400)
-      }
+    | (Some(#String(nameStr)), Some(#String(emailStr))) =>
+      let input: Users.Create.Request.t = {name: nameStr, email: emailStr}
+      let created: Users.user = {id: "todo-uuid", name: input.name, email: input.email}
+      c->Hono.jsonWithStatus(created, 201)
+    | (Some(_), Some(_)) => c->Hono.jsonWithStatus({"error": "name and email must be strings"}, 400)
     | _ => c->Hono.jsonWithStatus({"error": "name and email are required"}, 400)
     }
   })
