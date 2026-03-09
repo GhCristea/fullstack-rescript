@@ -9,7 +9,11 @@ let make = () => {
       
       // Manual validation: check response shape
       switch (raw->Dict.get("status"), raw->Dict.get("timestamp")) {
-      | (Some(#String(statusStr)), Some(#String(_))) => setApiStatus(_ => statusStr)
+      | (Some(statusJson), Some(_)) =>
+        switch statusJson->JSON.Decode.string {
+        | Some(statusStr) => setApiStatus(_ => statusStr)
+        | None => setApiStatus(_ => "invalid response")
+        }
       | _ => setApiStatus(_ => "invalid response")
       }
     }
